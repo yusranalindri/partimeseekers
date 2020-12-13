@@ -1,0 +1,22 @@
+body {
+    margin-top: 20px;
+}
+.judul{
+  text-align: center;
+  font-family: 'Anton', sans-serif;
+  background: linear-gradient(#2b2b2b, #454545);
+  /* clip hackery */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 1em 1em 0em 1em;
+}
+.subjudul{
+  text-align: center;
+  font-family: 'Teko', sans-serif;
+  margin: 0.5em 1em 1em 1em;
+
+}
+.responsive{
+  width: 100%;
+  height: auto;
+}
