@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Lowongan;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Lowongan;
 
-class C_UbahLowongan extends Controller
+use Illuminate\Http\Request;
+
+class c_LowonganPelamar extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,9 @@ class C_UbahLowongan extends Controller
      */
     public function index()
     {
-        //
+        $lowongans = Lowongan::whereStatus(Auth::user()->status=1)->get();
+        //        dd($lowongans);
+                return view('v_LowonganPelamar',compact('lowongans'));
     }
 
     /**
@@ -25,7 +27,7 @@ class C_UbahLowongan extends Controller
      */
     public function create()
     {
-        return view('V_TambahLowongan');
+        //
     }
 
     /**
@@ -36,7 +38,7 @@ class C_UbahLowongan extends Controller
      */
     public function store(Request $request)
     {
-
+        //
     }
 
     /**
@@ -47,7 +49,8 @@ class C_UbahLowongan extends Controller
      */
     public function show($id)
     {
-        //
+        $lowongan=Lowongan::find($id);
+        return view('V_DetailLowongan',compact('lowongan'));
     }
 
     /**
@@ -58,8 +61,7 @@ class C_UbahLowongan extends Controller
      */
     public function edit($id)
     {
-        $lowongan=Lowongan::findOrFail($id);
-        return view('V_EditLowongan',compact('lowongan'));
+        //
     }
 
     /**
@@ -71,17 +73,7 @@ class C_UbahLowongan extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate(request(), [
-            'nama_lowongan' => ['required', 'string', 'max:100'],
-            'jabatan' => ['required', 'string', 'max:100'],
-            'upah' => ['required', 'numeric'],
-            'kriteria' => ['required', 'string'],
-            
-        ]);
-        $data=$request->all();
-        $data['status']=0;
-        Lowongan::find($id)->update($data);
-        return redirect(route('lowongan'));
+        //
     }
 
     /**

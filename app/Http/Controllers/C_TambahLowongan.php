@@ -36,10 +36,22 @@ class C_TambahLowongan extends Controller
      */
     public function store(Request $request)
     {
-        $data=$request->all();
-        $data['mitra_id']=Auth::user()->mitra->id;
-        $data['status']=0;
-        Lowongan::create($data);
+        $this->validate(request(), [
+            'nama_lowongan' => ['required', 'string', 'max:100'],
+            'jabatan' => ['required', 'string', 'max:100'],
+            'upah' => ['required', 'numeric'],
+            'kriteria' => ['required', 'string'],
+            
+        ]);
+
+        $data= Lowongan::create([
+            'nama_lowongan' => $request->nama_lowongan,
+            'jabatan' => $request->jabatan,
+            'upah' => $request->upah,
+            'kriteria' => $request->kriteria,
+            'mitra_id'=> Auth::user()->mitras->first()->id,
+            'status'=> 0
+        ]);
         return redirect(route('lowongan'));
     }
 

@@ -67,6 +67,7 @@ Route::get('/pilihpaket/form/infopembayaran', 'infopembayaran@info')->name('info
 
 
 Route::get('/lowongan','C_Lowongan@index')->name('lowongan');
+Route::get('/lowongan/detail/{id}','c_LowonganPelamar@show')->name('lowongan-detail');
 Route::get('/lowongan/create','C_TambahLowongan@create')->name('tambah-lowongan');
 Route::post('/lowongan/create','C_TambahLowongan@store')->name('store-lowongan');
 
@@ -79,6 +80,12 @@ Route::put('/lowongan/verify/{id}','C_DetailLowongan@update')->name('verify-lowo
 Route::get('/mitra','C_Mitra@index')->name('mitra');
 Route::get('/mitra/detail/{id}','C_Mitra@show')->name('mitra-detail');
 
+Route::get('/lowonganPelamar','c_LowonganPelamar@index')->name('lowongan-pelamar');
+
 Route::get('/berkaslamaran','C_BerkasLamaran@index')->name('berkaslamaran');
 Route::post('/berkaslamaran/upload','C_BerkasLamaran@store')->name('uploadberkas');
 Route::get('/berkaslamaran/detail','C_BerkasLamaran@berkas')->name('detaillamaran');
+
+Route::get('/lamaran','C_Lamaran@index')->name('lamaran');
+Route::get('/lamaran/detail/{id}','C_DetailLamaran@index')->name('lihatlamaran');
+

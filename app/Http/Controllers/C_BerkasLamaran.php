@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ApplyLowongan;
+use App\Lowongan;
+use App\Pelamar;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class C_BerkasLamaran extends Controller
 {
@@ -15,7 +19,8 @@ class C_BerkasLamaran extends Controller
      */
     public function index()
     {
-        return view('v_BerkasLamaran');
+      $namalowongan = Lowongan::all();
+        return view('v_BerkasLamaran', compact('namalowongan'));
     }
 
     /**
@@ -37,7 +42,10 @@ class C_BerkasLamaran extends Controller
     public function store(Request $request)
     {
           $this->validate(request(), [
-              'berkas' => 'required|mimes:jpeg,jpg,png|max:5000',
+              // // 'lowongan_id' => 'required|min:2',
+              // // 'pelamar_id'=> 'required|string',
+              // 'Status' => 'required|string',
+              'berkas' => 'required|mimes:jpeg,jpg,png|max:5000'
           ]);
           $file = $request->file('berkas');
         //   $name = Carbon::now()->format('Y-m-d') . '.' . $file->getClientOriginalExtension();
@@ -45,17 +53,20 @@ class C_BerkasLamaran extends Controller
           $path = $request->file('berkas')->getClientOriginalName();
           $berkas = new ApplyLowongan;
           $berkas -> berkas = $path;
-          $berkas -> pelamar_id = 1;
-          $berkas -> lowongan_id = 5;
-
-
-          $berkas -> save();
+          // $berkas -> pelamar_id = 1;
+          // $berkas -> lowongan_id = 5;
+        //   dd(Auth::user());
+            $berkas-> pelamar_id = Auth::user()->pelamars->first()->id;
+            $berkas-> lowongan_id = $request->namalowongan;
+            $berkas-> status = 0;
+          // $berkas -> ApplyLowongan::whereUserId(Auth::user()->pelamar->id)->get();;
+          // $berkas -> Lowongan::whereLowongan(Auth::lowongan()->id)->get();;
+            $berkas -> save();
         //   $path = $file->move('uploads',$name);
         //   $apply = ApplyLowongan::create([
         //     'berkas' => $path
         //   ]);
-
-          return redirect()->to('/lowongan');
+          return redirect('/lowonganPelamar');
     }
 
     /**

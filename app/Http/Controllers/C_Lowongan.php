@@ -16,7 +16,7 @@ class C_Lowongan extends Controller
      */
     public function index()
     {
-        $status=Auth::user()->mitra->pembelianPakets;
+        $status=Auth::user()->mitras->first()->pembelianPakets;
         $last=[];
         foreach ($status as $s){
             array_push($last,$s->updated_at->addDays($s->paket->durasi));
@@ -30,7 +30,7 @@ class C_Lowongan extends Controller
         if (Auth::user()->role==1){
             $lowongans = Lowongan::get();
         }else{
-            $lowongans = Lowongan::whereMitraId(Auth::user()->mitra->id)->get();
+            $lowongans = Lowongan::whereMitraId(Auth::user()->mitras->first()->id)->get();
         }
 
 //        dd($lowongans);

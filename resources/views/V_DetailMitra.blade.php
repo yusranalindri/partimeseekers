@@ -41,7 +41,7 @@
                     <br>
                     Alamat : {{$mitra->alamat}}
                     <br>
-                    Bidang : {{$mitra->mitra->bidang}}
+                    Bidang : {{$mitra->mitras->first()->bidang}}
                 </div>
             </div>
         </div>

@@ -33,12 +33,15 @@
         <div class="row">
             <div class="col-md-12 col-lg-12 col-sm-12">
                 <div class="white-box">
-                    @if ($a->greaterThan(Carbon\Carbon::now()))
-                        Paket anda aktif hingga {{$a}} <br>
-                        <a href="{{route('tambah-lowongan')}}" class="btn btn-primary">Tambah</a>
-                    @else
-                        Anda tidak memiliki paket aktif
+                    @if (Auth::user()->role==2)
+                         @if ($a->greaterThan(Carbon\Carbon::now()))
+                            Paket anda aktif hingga {{$a}} <br>
+                            <a href="{{route('tambah-lowongan')}}" class="btn btn-primary">Tambah</a>
+                        @else
+                            Anda tidak memiliki paket aktif
+                        @endif
                     @endif
+                    
 
                     {{--                    <div class="d-md-flex mb-3">--}}
                     {{--                        <h3 class="box-title mb-0">List Lowongan</h3>--}}
@@ -97,13 +100,6 @@
                                             @else
                                                 Sudah diverifikasi
                                             @endif
-
-                                            @elseif(Auth::user()->role==3)
-                                                @if($l->status==1)
-                                                    <a href="{{route('berkaslamaran')}}" class="btn btn-primary">apply lowongan</a>
-                                                @else
-                                                      tidak dapat apply lowongan
-                                                @endif
 
                                         @endif
                                         {{--                                    <a href="" class="btn btn-danger">Hapus</a>--}}

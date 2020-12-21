@@ -63,7 +63,7 @@
                                 <tr>
                                     <td>{{$m->id}}</td>
                                     <td class="txt-oflo">{{$m->username}}</td>
-                                    <td>{{$m->mitra->bidang}}</td>
+                                    <td>{{$m->mitras->first()->bidang}}</td>
                                     {{--                                {{dd($m->statusLowongan)}}--}}
                                     <td>{{$m->phone}}</td>
                                     <td class="txt-oflo">{{$m->email}}</td>

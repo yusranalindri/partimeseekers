@@ -1,21 +1,25 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Lowongan;
-use Illuminate\Http\Request;
+use App\ApplyLowongan;
+use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
-class C_UbahLowongan extends Controller
+class C_DetailLamaran extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $applylowongan= ApplyLowongan::find($id);
+           // mengambil data dari table pegawai
+    	$apply_lowongan = ApplyLowongan::findOrFail($id);
+    	// mengirim data pegawai ke view index
+        return view('V_DetailLamaran',compact('applylowongan'),['apply_lowongan' => $apply_lowongan]);
     }
 
     /**
@@ -25,7 +29,7 @@ class C_UbahLowongan extends Controller
      */
     public function create()
     {
-        return view('V_TambahLowongan');
+        //
     }
 
     /**
@@ -36,7 +40,7 @@ class C_UbahLowongan extends Controller
      */
     public function store(Request $request)
     {
-
+        //
     }
 
     /**
@@ -58,8 +62,7 @@ class C_UbahLowongan extends Controller
      */
     public function edit($id)
     {
-        $lowongan=Lowongan::findOrFail($id);
-        return view('V_EditLowongan',compact('lowongan'));
+        //
     }
 
     /**
@@ -71,17 +74,7 @@ class C_UbahLowongan extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate(request(), [
-            'nama_lowongan' => ['required', 'string', 'max:100'],
-            'jabatan' => ['required', 'string', 'max:100'],
-            'upah' => ['required', 'numeric'],
-            'kriteria' => ['required', 'string'],
-            
-        ]);
-        $data=$request->all();
-        $data['status']=0;
-        Lowongan::find($id)->update($data);
-        return redirect(route('lowongan'));
+        //
     }
 
     /**

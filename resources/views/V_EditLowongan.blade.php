@@ -44,7 +44,7 @@
                                        name="nama_lowongan" value="{{ $lowongan->nama_lowongan }}">
                                 @error('nama_lowongan')
                                 <div id="validationServer03Feedback"
-                                     class="invalid-feedback"> {{'Nama lowongan harap diisi!'}} </div>
+                                     class="invalid-feedback"> {{'jangan ada data kosong!'}} </div>
                                 @enderror
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                                        name="jabatan" value="{{ $lowongan->jabatan }}">
                                 @error('jabatan')
                                 <div id="validationServer03Feedback"
-                                     class="invalid-feedback"> {{'Nama jabatan harap diisi!'}} </div>
+                                     class="invalid-feedback"> {{'jangan ada data kosong'}} </div>
                                 @enderror
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                                        name="upah" value="{{ $lowongan->upah }}">
                                 @error('upah')
                                 <div id="validationServer03Feedback"
-                                     class="invalid-feedback"> {{'Nama upah harap diisi!'}} </div>
+                                     class="invalid-feedback"> {{'jangan ada data kosong'}} </div>
                                 @enderror
                             </div>
                         </div>
@@ -83,7 +83,7 @@
                                 </textarea>
                                 @error('kriteria')
                                 <div id="validationServer03Feedback"
-                                     class="invalid-feedback"> {{'Kriteria upah harap diisi!'}} </div>
+                                     class="invalid-feedback"> {{'jangan ada data kosong'}} </div>
                                 @enderror
                             </div>
                         </div>
@@ -92,6 +92,11 @@
                         </div>
 
                     </form>
+                    <a href="{{route('lowongan')}}">
+                        <div class="row col-12">
+                            <button class="btn btn-primary float-right"> batal</button>
+                        </div>
+                        </a>
                 </div>
             </div>
         </div>

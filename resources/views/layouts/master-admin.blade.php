@@ -19,9 +19,13 @@
     <link href="{{asset('plugins/bower_components/chartist/dist/chartist.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css')}}">
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{asset('css/submenu.css')}}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/dashboard.css')}}">
+    <link rel="stylesheet" href="/css/aboutus.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <link href="{{asset('css/style.min.css')}}" rel="stylesheet">
     @yield('css')
 </head>
@@ -53,6 +57,7 @@
                 <a href="{{route('dashboard')}}">
                     <p class="headone">Part Time Seekers</p>
                 </a>
+               
                 <!-- ============================================================== -->
                 <!-- End Logo -->
                 <!-- ============================================================== -->
@@ -132,6 +137,7 @@
                             <span class="hide-menu">Dashboard</span>
                         </a>
                     </li>
+                    @if(Auth::user()->role==1)
                     <li class="sidebar-item pt-2">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('lowongan')}}"
                            aria-expanded="false">
@@ -139,6 +145,27 @@
                             <span class="hide-menu">Lowongan</span>
                         </a>
                     </li>
+                    @endif
+
+                    @if(Auth::user()->role==2)
+                    <li class="sidebar-item pt-2">
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('lowongan')}}"
+                           aria-expanded="false">
+                            <i class="far fa-folder" aria-hidden="true"></i>
+                            <span class="hide-menu">Lowongan</span>
+                        </a>
+                    </li>
+                    @endif
+
+                    @if(Auth::user()->role==3)
+                    <li class="sidebar-item pt-2">
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('lowongan-pelamar')}}"
+                           aria-expanded="false">
+                            <i class="far fa-folder" aria-hidden="true"></i>
+                            <span class="hide-menu">Lowongan</span>
+                        </a>
+                    </li>
+                    @endif
 
                     <li class="sidebar-item pt-2">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('mitra')}}"
@@ -147,6 +174,16 @@
                             <span class="hide-menu">Mitra</span>
                         </a>
                     </li>
+
+                    @if(Auth::user()->role==3)
+                    <li class="sidebar-item pt-2">
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('lamaran')}}"
+                           aria-expanded="false">
+                            <i class="far fa-folder" aria-hidden="true"></i>
+                            <span class="hide-menu">Lamaran</span>
+                        </a>
+                    </li>
+                    @endif
 
                     <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('view-profile')}}"

@@ -70,7 +70,7 @@ class paketlowongan extends Controller
   public function beli($id){
       PembelianPaket::create([
           'paket_id'=>$id,
-          'mitra_id'=>Auth::user()->mitra->id,
+          'mitra_id'=>Auth::user()->mitras->first()->id,
           'status_pembelian_id'=>0
       ]);
       return redirect('/paketlowongan');

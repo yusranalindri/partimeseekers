@@ -36,6 +36,19 @@
                     <form action="{{route('uploadberkas')}}" enctype="multipart/form-data" method="post">
                         @csrf
                         @method('post')
+                        <div class="form-group row">
+                           <label for="namalowongan" class="col-md-4 col-form-label text-md-right">{{ __('Nama Lowongan') }}</label>
+
+                           <div class="col-md-6">
+                             <select class="form-control" name="namalowongan">
+                               <option value="">--pilih--</option>
+                               @foreach($namalowongan as $n)
+                                  <option value="{{$n->id}}">{{$n->nama_lowongan}}</option>
+                               @endforeach
+                             </select>
+                           </div>
+                        </div>
+
                              <div class="form-group row">
                                 <label for="berkas" class="col-md-4 col-form-label text-md-right">{{ __('Uplaod Berkas') }}</label>
 
@@ -56,9 +69,11 @@
                         </div>
 
                     </form>
+                    <a href="{{route('lowongan-pelamar')}}">
                     <div class="row col-12">
                         <button class="btn btn-secondary float-right"> Batal</button>
                     </div>
+                </a>
                 </div>
             </div>
         </div>

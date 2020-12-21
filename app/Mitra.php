@@ -10,6 +10,10 @@ class Mitra extends Model
     /**
      * Get the comments for the blog post.
      */
+    public function lowongans()
+    {
+        return $this->hasMany(Lowongan::class);
+    }
     public function pembelianPakets()
     {
         return $this->hasMany(PembelianPaket::class);

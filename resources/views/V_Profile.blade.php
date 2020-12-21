@@ -42,7 +42,7 @@
                                class=" col-form-label text-md-right">{{ auth()->user()->alamat }}
                         </label>
                     </div>
-
+                    @if(Auth::user()->role==2)
                     <div class="form-group row">
                         <label for="bidang"
                                class="col-md-4 col-form-label text-md-right">{{ __('Bidang') }}</label>
@@ -50,7 +50,25 @@
                                class=" col-form-label text-md-right">{{ auth()->user()->mitra->bidang}}
                         </label>
                     </div>
-
+                    @endif
+                    @if(Auth::user()->role==1)
+                    <div class="form-group row">
+                        <label for="bidang"
+                               class="col-md-4 col-form-label text-md-right">{{ __('Bidang') }}</label>
+                        <label for="namaperusahaan"
+                               class=" col-form-label text-md-right">{{ auth()->user()->mitra->bidang}}
+                        </label>
+                    </div>
+                    @endif
+                    @if(Auth::user()->role==3)
+                    <div class="form-group row">
+                        <label for="pekerjaan"
+                               class="col-md-4 col-form-label text-md-right">{{ __('pekerjaan') }}</label>
+                        <label for="pekerjaan"
+                               class=" col-form-label text-md-right">{{ auth()->user()->pelamars->first()->pekerjaan}}
+                        </label>
+                    </div>
+                    @endif
                     <div class="form-group row">
                         <label for="phone"
                                class="col-md-4 col-form-label text-md-right">{{ __('No.Handphone') }}</label>

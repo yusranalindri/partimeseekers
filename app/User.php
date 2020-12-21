@@ -18,7 +18,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Mitra::class);
     }
-
+    public function Pelamars()
+    {
+        return $this->hasMany(Pelamar::class);
+    }   
     /**
      * The attributes that are mass assignable.
      *
@@ -45,14 +48,5 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function pelamar()
-    {
-        return $this->hasOne('App\Pelamar');
-    }
-    public function mitra()
-    {
-        return $this->hasOne('App\Mitra');
-    }
 
 }

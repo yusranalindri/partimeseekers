@@ -36,7 +36,7 @@ class c_daftar_pelamar extends Controller
             'phone' => $request->phone,
             'username' => $request->username,
             'password' => bcrypt($request->password),
-              'role'=>3
+            'role'=>3
           ]);
           $pelamar = Pelamar::create([
             'user_id' => $user->id,

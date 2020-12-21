@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Mitra;
+use App\Pelamar;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -19,9 +21,14 @@ class C_Profile extends Controller
         $request->user()->update(
             $request->all()
         );
+        Pelamar::whereUserId(Auth::id())->update(['pekerjaan'=> $request->pekerjaan]);
+        $request->user()->update(
+            $request->all()
+        );
         return redirect()->route('profile.edit');
     }
     public function view(){
+        
         return view('V_Profile');
     }
 

@@ -58,8 +58,8 @@
                                     </span>
                                 @enderror
                             </div>
-						</div>
-
+                        </div>
+                        @if(Auth::user()->role==2)
 						<div class="form-group row">
                             <label for="bidang" class="col-md-4 col-form-label text-md-right">{{ __('Bidang') }}</label>
 
@@ -72,8 +72,24 @@
                                     </span>
                                 @enderror
                             </div>
-						</div>
+                        </div>
+                        @endif
+                        @if(Auth::user()->role==3)
+						<div class="form-group row">
+                            <label for="pekerjaan" class="col-md-4 col-form-label text-md-right">{{ __('pekerjaan') }}</label>
 
+                            <div class="col-md-6">
+                                <input id="pekerjaan" type="text" class="form-control @error('pekerjaan') is-invalid @enderror" name="pekerjaan" value="{{ old('pekerjaan', $user->pelamars->first()->pekerjaan) }}" autocomplete="pekerjaan">
+
+                                @error('pekerjaan')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        @endif
+                        
 						<div class="form-group row">
                             <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('No.Telephone') }}</label>
 

@@ -31,7 +31,7 @@ class c_daftar_mitra extends Controller
           'phone' => $request->phone,
           'username' => $request->username,
           'password' => bcrypt($request->password),
-            'role'=>2
+          'role'=>2
         ]);
         $mitra = Mitra::create([
           'user_id' => $user->id,

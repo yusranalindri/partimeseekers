@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Lowongan;
 use Illuminate\Http\Request;
+use App\ApplyLowongan;
 use Illuminate\Support\Facades\Auth;
 
-class C_UbahLowongan extends Controller
+class C_Lamaran extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,8 @@ class C_UbahLowongan extends Controller
      */
     public function index()
     {
-        //
+        $applylowongans = ApplyLowongan::wherePelamarId(Auth::user()->pelamars->first()->id)->get();
+        return view('V_Lamaran',compact('applylowongans'));
     }
 
     /**
@@ -25,7 +26,7 @@ class C_UbahLowongan extends Controller
      */
     public function create()
     {
-        return view('V_TambahLowongan');
+        //
     }
 
     /**
@@ -36,7 +37,7 @@ class C_UbahLowongan extends Controller
      */
     public function store(Request $request)
     {
-
+        //
     }
 
     /**
@@ -58,8 +59,7 @@ class C_UbahLowongan extends Controller
      */
     public function edit($id)
     {
-        $lowongan=Lowongan::findOrFail($id);
-        return view('V_EditLowongan',compact('lowongan'));
+        //
     }
 
     /**
@@ -71,17 +71,7 @@ class C_UbahLowongan extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate(request(), [
-            'nama_lowongan' => ['required', 'string', 'max:100'],
-            'jabatan' => ['required', 'string', 'max:100'],
-            'upah' => ['required', 'numeric'],
-            'kriteria' => ['required', 'string'],
-            
-        ]);
-        $data=$request->all();
-        $data['status']=0;
-        Lowongan::find($id)->update($data);
-        return redirect(route('lowongan'));
+        //
     }
 
     /**
