@@ -47,7 +47,7 @@
                         <label for="bidang"
                                class="col-md-4 col-form-label text-md-right">{{ __('Bidang') }}</label>
                         <label for="namaperusahaan"
-                               class=" col-form-label text-md-right">{{ auth()->user()->mitra->bidang}}
+                               class=" col-form-label text-md-right">{{ auth()->user()->mitras->first()->bidang}}
                         </label>
                     </div>
                     @endif
@@ -56,7 +56,7 @@
                         <label for="bidang"
                                class="col-md-4 col-form-label text-md-right">{{ __('Bidang') }}</label>
                         <label for="namaperusahaan"
-                               class=" col-form-label text-md-right">{{ auth()->user()->mitra->bidang}}
+                               class=" col-form-label text-md-right">{{ auth()->user()->mitras->first()->bidang}}
                         </label>
                     </div>
                     @endif

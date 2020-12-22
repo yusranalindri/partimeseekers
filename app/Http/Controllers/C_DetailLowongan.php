@@ -72,7 +72,7 @@ class C_DetailLowongan extends Controller
     {
         $data=$request->all();
         Lowongan::find($id)->update($data);
-        return redirect(route('lowongan'));
+        return redirect(route('lowongan-admin'));
     }
 
     /**

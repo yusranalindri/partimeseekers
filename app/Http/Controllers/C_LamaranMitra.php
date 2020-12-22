@@ -2,27 +2,22 @@
 
 namespace App\Http\Controllers;
 use App\ApplyLowongan;
-use App\StatusPembelian;
-use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-class C_DetailLamaran extends Controller
+class C_LamaranMitra extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        $applylowongan= ApplyLowongan::find($id);
-           // mengambil data dari table pegawai
-        $apply_lowongan = ApplyLowongan::findOrFail($id);
-        $statuspembelian = StatusPembelian::all();
-        // $apply = ApplyLowongan::all();
-        // mengirim data pegawai ke view index
-        return view('V_DetailLamaran',compact('applylowongan','statuspembelian'),['apply_lowongan' => $apply_lowongan]);
+        $lamarans = ApplyLowongan::whereHas('lowongan', function ($q){
+            $q->whereMitraId(Auth::user()->mitras->first()->id);
+        })->get();
+        return view('V_LamaranMitra', compact('lamarans'));
     }
 
     /**
@@ -75,19 +70,9 @@ class C_DetailLamaran extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
-        $this->validate(request(), [
-            // // 'lowongan_id' => 'required|min:2',
-            // // 'pelamar_id'=> 'required|string',
-            // 'Status' => 'required|string',
-            'status' => 'required'
-        ]);
-        $applylowongan = ApplyLowongan::find($id);
-        $applylowongan->status = $request->status;
-        $applylowongan->save();
-
-        return redirect('/lamaran_mitra');
+        //
     }
 
     /**

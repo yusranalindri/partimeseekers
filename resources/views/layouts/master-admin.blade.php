@@ -139,7 +139,7 @@
                     </li>
                     @if(Auth::user()->role==1)
                     <li class="sidebar-item pt-2">
-                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('lowongan')}}"
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('lowongan-admin')}}"
                            aria-expanded="false">
                             <i class="far fa-folder" aria-hidden="true"></i>
                             <span class="hide-menu">Lowongan</span>
@@ -184,6 +184,17 @@
                         </a>
                     </li>
                     @endif
+
+                    @if(Auth::user()->role==2)
+                    <li class="sidebar-item pt-2">
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('lamaran-mitra')}}"
+                           aria-expanded="false">
+                            <i class="far fa-folder" aria-hidden="true"></i>
+                            <span class="hide-menu">Lamaran</span>
+                        </a>
+                    </li>
+                    @endif
+
 
                     <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('view-profile')}}"

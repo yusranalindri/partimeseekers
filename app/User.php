@@ -48,5 +48,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function pelamar()
+    {
+        return $this->hasOne('App\Pelamar');
+    }
+    public function mitra()
+    {
+        return $this->hasOne('App\Mitra');
+    }
 
 }

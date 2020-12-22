@@ -101,7 +101,7 @@ Licensed under MIT
                             <label for="bidang" class="col-md-4 col-form-label text-md-right">{{ __('Bidang') }}</label>
 
                             <div class="col-md-6">
-                                <input id="bidang" type="text" class="form-control @error('bidang') is-invalid @enderror" name="bidang" value="{{ old('bidang', $user->mitra->bidang) }}" autocomplete="bidang" autofocus>
+                                <input id="bidang" type="text" class="form-control @error('bidang') is-invalid @enderror" name="bidang" value="{{ old('bidang', $user->mitras->first()->bidang) }}" autocomplete="bidang" autofocus>
 
                                 @error('bidang')
                                     <span class="invalid-feedback" role="alert">

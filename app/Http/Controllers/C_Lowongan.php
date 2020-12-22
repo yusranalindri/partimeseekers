@@ -16,25 +16,34 @@ class C_Lowongan extends Controller
      */
     public function index()
     {
-        $status=Auth::user()->mitras->first()->pembelianPakets;
-        $last=[];
-        foreach ($status as $s){
-            array_push($last,$s->updated_at->addDays($s->paket->durasi));
-        }
-        sort($last);
-        $a=$last[count($last)-1];
+        
+        
+        // $last=[];
+        // foreach ($status as $s){
+        //     array_push($last,$s->updated_at->addDays($s->paket->durasi));
+        // }
+        // sort($last);
+        
 
 //        if ($a->greaterThan(Carbon::now())){
 //            dd($a);
 //        }
         if (Auth::user()->role==1){
+            // $a='';
             $lowongans = Lowongan::get();
         }else{
+            $a=Auth::user()->mitra->durasi;
+            
             $lowongans = Lowongan::whereMitraId(Auth::user()->mitras->first()->id)->get();
         }
 
 //        dd($lowongans);
         return view('V_Lowongan',compact('lowongans','a'));
+    }
+    public function indexadmin()
+    {
+        $lowongans = Lowongan::get(); 
+        return view('V_Lowongan',compact('lowongans'));
     }
 
     /**

@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="container-fluid">
-        @if (Auth::user()->role==2)
+        @if (Auth::user()->role==1)
         <div class="row">
             <div class="col-md-12 col-lg-12 col-sm-12">
                 <div class="white-box">
@@ -125,7 +125,7 @@
               </div>
             </div>
             </div>
-            <a href="{{route('berkaslamaran')}}" class="btn btn-primary">apply lowongan</a>
+            <a href="{{route('berkaslamaran',$lowongan->id)}}" class="btn btn-primary">apply lowongan</a>
         <a href="{{route('lowongan-pelamar')}}">
             <div class="row col-12">
                 <button class="btn btn-secondary float-right"> kembali</button>

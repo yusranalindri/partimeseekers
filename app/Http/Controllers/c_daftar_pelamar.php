@@ -17,7 +17,7 @@ class c_daftar_pelamar extends Controller
           $this->validate(request(), [
               'name' => ['required', 'string', 'max:50'],
               'alamat' => ['required', 'string', 'max:100'],
-              'tglahir' => ['required', 'date'],
+              'tglahir' => ['required', 'date','before:17 years ago'],
               'pekerjaan' => ['required', 'string'],
               'pendidikan' => ['required', 'string'],
               'phone' => ['required', 'numeric', 'digits_between:10,15'],

@@ -2,7 +2,7 @@
 @section('contents')
 <div class="container-fluid">
     <div class="col-md-12 col-lg-12 col-sm-12">
-    @if (Auth::user()->role==3)
+    {{-- @if (Auth::user()->role==3) --}}
         <div class="white-box">
           <div class="profile-content">
               <div class="form-group row">
@@ -45,15 +45,35 @@
                 <img src="{{asset('uploads/'.$applylowongan->berkas)}}" alt="" style="max-height: 400px">
             </div>
           </div>
-          
-
-            </div>
-            <a href="{{route('lamaran')}}">
-            <div class="row col-12">
-                <button class="btn btn-secondary float-right"> kembali</button>
-            </div>
-          </a>
+          @if (Auth::user()->role==2)
+          <form action="{{route('updatePelamar',$applylowongan->id)}}" method="post">
+            @method('put')
+            @csrf
+            <select name="status" id="" class="form-control">
+              <option value="">--pilih--</option>
+              @foreach($statuspembelian as $s )
+                 <option value="{{$s->id}}">{{$s->status}}</option>
+              @endforeach
+            </select>
+            <input type="submit" class="btn btn-primary" value="Submit">
+        </form>
           @endif
+            </div>
+            @if (Auth::user()->role==3)
+            <a href="{{route('lamaran')}}">
+              <div class="row col-12">
+                  <button class="btn btn-secondary float-right"> kembali</button>
+              </div>
+            </a>
+            @elseif(Auth::user()->role==2)
+            <a href="{{route('lamaran-mitra')}}">
+              <div class="row col-12">
+                  <button class="btn btn-secondary float-right"> kembali</button>
+              </div>
+            </a>
+            @endif
+            
+          {{-- @endif --}}
     </div>
                 </div>
             </div>
