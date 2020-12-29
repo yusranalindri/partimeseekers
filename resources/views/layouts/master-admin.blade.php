@@ -55,7 +55,7 @@
                 <!-- Logo -->
                 <!-- ============================================================== -->
                 <a href="{{route('dashboard')}}">
-                    <p class="headone">Part Time Seekers</p>
+                    <img src="{{url('/images/logotype_navy.png')}}" alt="Image" style="max-height: 56px"/>
                 </a>
                
                 <!-- ============================================================== -->

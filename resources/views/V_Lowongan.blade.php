@@ -34,12 +34,7 @@
             <div class="col-md-12 col-lg-12 col-sm-12">
                 <div class="white-box">
                     @if (Auth::user()->role==2)
-                         @if ($a->greaterThan(Carbon\Carbon::now()))
-                            Paket anda aktif hingga {{$a}} <br>
                             <a href="{{route('tambah-lowongan')}}" class="btn btn-primary">Tambah</a>
-                        @else
-                            Anda tidak memiliki paket aktif
-                        @endif
                     @endif
                     
 

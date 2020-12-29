@@ -45,7 +45,7 @@
           <td>
           <div class="content">
             <div class="title m-b-md">
-              PART TIME<br>SEEKERS</br>
+             <img src="{{url('/images/vertical_putih_border-nvy.png')}}" alt="Image" style="max-height: 250px"/>
             </div>
           </div>
           </td>

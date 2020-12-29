@@ -15,7 +15,7 @@
     <title>Part time seekers - daftar</title>
   </head>
   <body>
-    <h1 class="judul"><a href="{{route('index')}}" style="text-docoration: none;">PART TIME SEEKERS</a></h1>
+    <h1 class="judul"><a href="{{route('index')}}" style="text-docoration: none;"><img src="{{url('/images/logotype_navy.png')}}" alt="Image" style="max-height: 70px"/></a></h1>
     <h2 class="subjudul">Registeration Form</h2>
     <form method="POST" enctype="multipart/form-data" action="{{route('mitra.store')}}">
         @csrf
